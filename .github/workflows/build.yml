@@ -35,4 +35,4 @@ jobs:
           context: .
           file: ./Containerfile.${{ matrix.os }}
           push: true
-          tags: quay.io/389ds/ci-${{ matrix.os }}:latest
+          tags: 389ds/ci-images/ci-${{ matrix.os }}:latest
