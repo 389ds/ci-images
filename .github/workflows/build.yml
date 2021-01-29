@@ -30,10 +30,11 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_TOKEN }}
 
-      - name: Push to GitHub Packages
+      - name: Push to quay.io
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Containerfile.${{ matrix.os }}
+          no-cache: true
           push: true
-          tags: quay.io/389ds/ci-images/ci-${{ matrix.os }}:latest
+          tags: ci-images/ci-${{ matrix.os }}:latest
