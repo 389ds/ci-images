@@ -19,6 +19,7 @@ jobs:
           - opensuse
           - ubuntu
           - debian
+          - scan
 
     steps:
       - name: Check out the repo
