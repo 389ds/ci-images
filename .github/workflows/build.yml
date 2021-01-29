@@ -26,7 +26,7 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: quay.io
-          username: ${{ secretes.QUAY_USERNAME }}
+          username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_TOKEN }}
 
       - name: Push to GitHub Packages
