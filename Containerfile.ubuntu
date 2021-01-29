@@ -2,5 +2,6 @@ FROM debian:stable
 
 RUN sed -i '/^deb /p;s/^deb /deb-src /' /etc/apt/sources.list && \
     apt update && \
+    apt upgrade -y && \
     apt install -y git && \
     apt build-dep -y 389-ds-base
