@@ -25,9 +25,9 @@ jobs:
       - name: Login to Registry
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: quay.io
+          username: ${{ secretes.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_TOKEN }}
 
       - name: Push to GitHub Packages
         uses: docker/build-push-action@v2
@@ -35,4 +35,4 @@ jobs:
           context: .
           file: ./Containerfile.${{ matrix.os }}
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/ci-${{ matrix.os }}:latest
+          tags: quay.io/389ds/ci-${{ matrix.os }}:latest
