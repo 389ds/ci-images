@@ -11,7 +11,8 @@ jobs:
     strategy:
       matrix:
         os:
-          - fedora
+          - empty
+          # - fedora
           # - centos
           # - opensuse
           # - ubuntu
@@ -34,4 +35,4 @@ jobs:
           context: .
           file: ./Containerfile.${{ matrix.os }}
           push: true
-          tags: ghcr.io/vashirov/ci-${{ matrix.os }}:latest
+          tags: ghcr.io/${{ github.repository_owner }}/ci-${{ matrix.os }}:latest
