@@ -7,6 +7,7 @@ on:
 jobs:
   push_to_registry:
     name: Push Docker image to GitHub Packages
+    environment: ci
     runs-on: ubuntu-20.04
     strategy:
       matrix:
