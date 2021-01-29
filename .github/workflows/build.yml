@@ -37,4 +37,4 @@ jobs:
           file: ./Containerfile.${{ matrix.os }}
           no-cache: true
           push: true
-          tags: ci-images/ci-${{ matrix.os }}:latest
+          tags: 389ds/ci-images:latest
