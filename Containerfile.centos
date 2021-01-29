@@ -1,0 +1,7 @@
+FROM centos:latest
+
+RUN dnf install -y dnf-utils git && \
+    dnf config-manager --set-enabled devel --set-enabled powertools && \
+    dnf builddep -y 389-ds-base && \
+    dnf clean all
+

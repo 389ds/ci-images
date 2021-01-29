@@ -1,0 +1,7 @@
+FROM opensuse/tumbleweed
+
+RUN zypper mr -e repo-source && \
+    zypper refresh && \
+    zypper -n in -t pattern devel_basis && \
+    zypper -n in git && \
+    zypper -n si -d 389-ds

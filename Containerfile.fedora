@@ -1,0 +1,6 @@
+FROM fedora:33
+
+RUN dnf install -y dnf-utils git && \
+    dnf builddep -y 389-ds-base && \
+    dnf clean all
+
