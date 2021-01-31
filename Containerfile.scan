@@ -1,4 +1,4 @@
 FROM quay.io/389ds/ci-images:fedora
 
-RUN dnf install -y cppcheck clang-analyzer && \
+RUN dnf install -y cppcheck clang-analyzer flawfinder jq && \
     dnf clean all
