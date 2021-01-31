@@ -5,7 +5,7 @@ ENV REPO https://github.com/389ds/389-ds-base
 
 RUN dnf install -y bzip2 bind-utils coreutils-common \
 cracklib-dicts hostname openssl procps-ng psmisc \
-python3-pytest npm nodejs rust cargo && \
+python3-pytest npm nodejs rust cargo rpm-builds && \
 dnf clean all
 
 CMD  ["/sbin/init"]
