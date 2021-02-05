@@ -9,6 +9,6 @@ python3-pytest npm nodejs rust cargo rpm-build && \
 dnf clean all
 
 RUN mkdir -p ${workspace}/ds
-WORKDIR ${workspace}}
+WORKDIR ${workspace}
 
 CMD  ["/sbin/init"]
