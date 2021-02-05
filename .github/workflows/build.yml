@@ -15,11 +15,11 @@ jobs:
       matrix:
         os:
           - fedora
-          - centos
-          - opensuse
-          - ubuntu
-          - debian
-          - scan
+          # - centos
+          # - opensuse
+          # - ubuntu
+          # - debian
+          # - scan
           - test
 
     steps:
