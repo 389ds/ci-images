@@ -2,8 +2,7 @@ FROM quay.io/389ds/ci-images:fedora
 
 RUN dnf install -y bzip2 bind-utils coreutils-common \
 cracklib-dicts hostname openssl procps-ng psmisc \
-python3-pytest npm nodejs rust cargo rpm-build && \
-dnf clean all
+python3-pytest npm nodejs rust cargo rpm-build
 
 RUN mkdir /workspace
 WORKDIR /workspace
