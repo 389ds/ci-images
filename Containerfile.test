@@ -4,8 +4,6 @@ RUN dnf install -y bzip2 bind-utils coreutils-common \
 cracklib-dicts hostname openssl procps-ng psmisc \
 python3-pytest npm nodejs rust cargo rpm-build
 
-ADD install_rpms.sh /usr/local/bin/install_rpms.sh
-
 RUN mkdir /workspace
 WORKDIR /workspace
 
