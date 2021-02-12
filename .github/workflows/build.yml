@@ -7,7 +7,7 @@ on:
      - cron: '0 0 * * *'
 
 jobs:
-  push_to_registry:
+  build_base_image_and_push:
     name: Push container image to quay.io
     environment: CI
     runs-on: ubuntu-20.04
@@ -15,13 +15,10 @@ jobs:
       matrix:
         os:
           - fedora
-          # - centos
-          # - opensuse
-          # - ubuntu
-          # - debian
-          # - scan
-          - test
-
+          - centos
+          - opensuse
+          - ubuntu
+          - debian
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -33,7 +30,7 @@ jobs:
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_TOKEN }}
 
-      - name: Push to quay.io
+      - name: Push base images to quay.io
         uses: docker/build-push-action@v2
         with:
           context: .
@@ -41,3 +38,33 @@ jobs:
           no-cache: true
           push: true
           tags: quay.io/389ds/ci-images:${{ matrix.os }}
+
+  build_flavored_image_and_push:
+    name: Push flavored container image to quay.io
+    needs: build_base_image_and_push
+    environment: CI
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        flavor:
+          - test
+          - scan
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Login to Registry
+        uses: docker/login-action@v1
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_TOKEN }}
+
+      - name: Push base images to quay.io
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Containerfile.${{ matrix.flavor }}
+          no-cache: true
+          push: true
+          tags: quay.io/389ds/ci-images:${{ matrix.flavor }}
