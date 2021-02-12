@@ -5,6 +5,8 @@ cracklib-dicts hostname openssl procps-ng psmisc \
 python3-pytest npm nodejs rust cargo rpm-build \
 libatomic lld libasan libubsan
 
+RUN pip3 install pytest-html
+
 # Clean up systemd services that we don't need in a container
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
