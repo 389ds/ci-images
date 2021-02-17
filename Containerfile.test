@@ -18,6 +18,8 @@ rm -f /lib/systemd/system/basic.target.wants/*;\
 rm -f /lib/systemd/system/*makecache.timer \
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
+ADD 99-sysctl.conf /etc/sysctl.d/99-sysctl.conf
+
 RUN mkdir /workspace
 WORKDIR /workspace
 
