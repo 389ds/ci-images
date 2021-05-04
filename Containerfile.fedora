@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM fedora:34
 
 RUN dnf install -y dnf-utils git python-unversioned-command python3 python3-pip && \
     dnf builddep -y 389-ds-base && \
