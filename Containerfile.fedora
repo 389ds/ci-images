@@ -1,6 +1,6 @@
 FROM fedora:34
 
-RUN dnf install -y dnf-utils git python-unversioned-command python3 python3-pip && \
+RUN dnf install -y dnf-utils git python-unversioned-command python3 python3-pip clang && \
     dnf builddep -y 389-ds-base && \
     dnf update -y && \
     dnf clean all
