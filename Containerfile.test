@@ -6,7 +6,7 @@ python3-pytest npm nodejs rust cargo rpm-build \
 libatomic lld libasan libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd
 
-RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright
+RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify
 RUN playwright install
 
 # Clean up systemd services that we don't need in a container
