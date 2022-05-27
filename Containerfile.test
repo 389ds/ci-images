@@ -1,4 +1,4 @@
-FROM quay.io/389ds/ci-images:fedora
+FROM quay.io/vashirov/ds:f36
 
 RUN dnf install -y bzip2 bind-utils coreutils-common \
 cracklib-dicts hostname openssl procps-ng psmisc \
@@ -8,6 +8,10 @@ libxshmfence webkit2gtk3 passwd cockpit dbus-glib
 
 RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify
 RUN playwright install
+
+# Workaround for Firefox build that contains an older libstdc++
+COPY --chmod=755 fix_pw.sh /usr/local/bin/fix_pw.sh
+RUN /usr/local/bin/fix_pw.sh
 
 # Clean up systemd services that we don't need in a container
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
