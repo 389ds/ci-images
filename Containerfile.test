@@ -6,7 +6,7 @@ python3-pytest npm nodejs rust cargo rpm-build \
 libatomic lld libasan libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib
 
-RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify
+RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
 RUN playwright install
 
 # Workaround for Firefox build that contains an older libstdc++
