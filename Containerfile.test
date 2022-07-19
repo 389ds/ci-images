@@ -1,4 +1,4 @@
-FROM quay.io/vashirov/ds:f36
+FROM quay.io/389ds/ci-images:fedora
 
 RUN dnf install -y bzip2 bind-utils coreutils-common \
 cracklib-dicts hostname openssl procps-ng psmisc \
