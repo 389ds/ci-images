@@ -1,11 +1,13 @@
 FROM quay.io/389ds/ci-images:fedora
 
+RUN dnf copr enable @389ds/perl-Mozilla-LDAP -y
+
 RUN dnf install -y bzip2 bind-utils coreutils-common \
 cracklib-dicts hostname openssl procps-ng psmisc \
 python3-pytest npm nodejs rust cargo rpm-build \
 libatomic lld libasan libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
-openldap-clients
+openldap-clients perl-Mozilla-LDAP
 
 RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
 RUN playwright install
