@@ -9,6 +9,9 @@ libatomic lld libasan libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
 openldap-clients perl-Mozilla-LDAP
 
+# Remove this once https://bodhi.fedoraproject.org/updates/FEDORA-2022-a174e00184 is in stable
+RUN dnf upgrade --enablerepo=updates-testing --refresh --advisory=FEDORA-2022-a174e00184 -y
+
 RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
 RUN playwright install
 
