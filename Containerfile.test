@@ -31,6 +31,7 @@ rm -f /lib/systemd/system/*makecache.timer \
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 ADD 99-sysctl.conf /etc/sysctl.d/99-sysctl.conf
+RUN sed -i -e 's/root//g' /etc/cockpit/disallowed-users
 
 RUN mkdir /workspace
 WORKDIR /workspace
