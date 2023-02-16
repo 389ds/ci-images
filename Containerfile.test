@@ -7,7 +7,7 @@ cracklib-dicts hostname openssl procps-ng psmisc \
 python3-pytest npm nodejs rust cargo rpm-build \
 libatomic lld libasan libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
-openldap-clients perl-Mozilla-LDAP
+openldap-clients perl-Mozilla-LDAP python3-cryptography
 
 # Remove this once https://bodhi.fedoraproject.org/updates/FEDORA-2022-a174e00184 is in stable
 RUN dnf upgrade --enablerepo=updates-testing --refresh --advisory=FEDORA-2022-a174e00184 -y
