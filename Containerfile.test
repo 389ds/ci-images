@@ -9,6 +9,11 @@ libatomic lld libasan libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
 openldap-clients perl-Mozilla-LDAP python3-cryptography
 
+# Temporary workaround for build issues with rust-1.71 to unblock CI
+RUN dnf downgrade -y https://kojipkgs.fedoraproject.org//packages/rust/1.70.0/1.fc38/x86_64/clippy-1.70.0-1.fc38.x86_64.rpm \
+https://kojipkgs.fedoraproject.org//packages/rust/1.70.0/1.fc38/x86_64/rust-1.70.0-1.fc38.x86_64.rpm \
+https://kojipkgs.fedoraproject.org//packages/rust/1.70.0/1.fc38/x86_64/rust-std-static-1.70.0-1.fc38.x86_64.rpm
+
 RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
 RUN playwright install
 
