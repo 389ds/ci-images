@@ -12,6 +12,7 @@ dnf clean all
 
 RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
 RUN playwright install
+RUN cargo install cargo-license --root /usr
 
 # Workaround for Firefox build that contains an older libstdc++
 COPY --chmod=755 fix_pw.sh /usr/local/bin/fix_pw.sh
