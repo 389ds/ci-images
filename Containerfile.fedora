@@ -1,4 +1,4 @@
-FROM fedora:39
+FROM fedora:40
 
 RUN rm -f /etc/yum.repos.d/fedora-cisco-openh264.repo
 
