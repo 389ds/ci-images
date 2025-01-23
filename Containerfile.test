@@ -5,7 +5,8 @@ RUN dnf copr enable @389ds/perl-Mozilla-LDAP -y
 RUN dnf install -y bzip2 bind-utils coreutils-common \
 cracklib-dicts hostname openssl procps-ng psmisc \
 python3-pytest npm nodejs rust cargo rpm-build \
-libatomic lld libasan libevent libubsan libdrm mesa-libgbm \
+libatomic lld libasan libevent-devel libtalloc-devel \
+libtevent-devel libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
 openldap-clients perl-Mozilla-LDAP python3-cryptography \
 net-snmp net-snmp-utils && \
