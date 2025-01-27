@@ -9,6 +9,7 @@ libatomic lld libasan libevent-devel libtalloc-devel \
 libtevent-devel libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
 openldap-clients perl-Mozilla-LDAP python3-cryptography \
+python3-numpy python3-plotly python3-matplotlib \
 net-snmp net-snmp-utils && \
 dnf clean all
 
