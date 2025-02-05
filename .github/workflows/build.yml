@@ -48,6 +48,8 @@ jobs:
       matrix:
         flavor:
           - test
+          - el8test
+          - el9test
           - scan
     steps:
       - name: Check out the repo

@@ -1,0 +1,37 @@
+FROM almalinux:8
+
+RUN dnf install -y dnf-utils git epel-release && \
+    dnf config-manager --set-enabled powertools && \
+    dnf module enable -y 389-ds:1.4 && \
+    dnf module enable -y nodejs:22 && \
+    dnf builddep -y 389-ds-base && \
+    dnf install -y bzip2 bind-utils clang coreutils-common \
+    cracklib-dicts hostname openssl procps-ng psmisc \
+    python3-pytest npm nodejs rust cargo rpm-build \
+    libatomic lld libasan libevent-devel libtalloc-devel \
+    libtevent-devel libubsan libdrm make mesa-libgbm \
+    libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
+    openldap-clients perl-Mozilla-LDAP python3-cryptography \
+    net-snmp net-snmp-utils && \
+    dnf clean all
+
+RUN pip3 install pytest-html pytest-custom_exit_code flaky testimony
+RUN cargo install cargo-license --root /usr
+
+# Clean up systemd services that we don't need in a container
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
+rm -f /lib/systemd/system/multi-user.target.wants/*;\
+rm -f /etc/systemd/system/*.wants/*;\
+rm -f /lib/systemd/system/local-fs.target.wants/*; \
+rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
+rm -f /lib/systemd/system/basic.target.wants/*;\
+rm -f /lib/systemd/system/*makecache.timer \
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+
+ADD 99-sysctl.conf /etc/sysctl.d/99-sysctl.conf
+
+RUN mkdir /workspace
+WORKDIR /workspace
+
+CMD  ["/sbin/init"]
