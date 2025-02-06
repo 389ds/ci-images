@@ -29,6 +29,7 @@ rm -f /lib/systemd/system/*makecache.timer \
 rm -f /lib/systemd/system/anaconda.target.wants/*;
 
 ADD 99-sysctl.conf /etc/sysctl.d/99-sysctl.conf
+ADD macros.389ds /usr/lib/rpm/macros.d/macros.389ds
 
 RUN mkdir /workspace
 WORKDIR /workspace
