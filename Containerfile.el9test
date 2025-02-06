@@ -11,7 +11,7 @@ RUN dnf install -y dnf-utils git epel-release && \
     libtevent-devel libubsan libdrm make mesa-libgbm \
     libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
     openldap-clients python3-cryptography \
-    net-snmp net-snmp-utils && \
+    net-snmp net-snmp-utils rsync && \
     dnf clean all
 
 RUN pip3 install pytest-html pytest-custom_exit_code flaky testimony
