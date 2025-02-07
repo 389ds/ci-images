@@ -14,7 +14,7 @@ RUN dnf install -y dnf-utils git epel-release && \
     net-snmp net-snmp-utils rsync && \
     dnf clean all
 
-RUN pip3 install pytest-html pytest-custom_exit_code flaky testimony
+RUN pip3 install pytest-html pytest-custom_exit_code flaky testimony python-slugify
 RUN cargo install cargo-license --root /usr
 
 # Clean up systemd services that we don't need in a container
