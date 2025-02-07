@@ -14,8 +14,13 @@ RUN dnf install -y dnf-utils git epel-release && \
     net-snmp net-snmp-utils rsync && \
     dnf clean all
 
-RUN pip3 install pytest-html pytest-custom_exit_code flaky testimony python-slugify
+RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
+RUN playwright install
 RUN cargo install cargo-license --root /usr
+
+# Workaround for Firefox build that contains an older libstdc++
+COPY --chmod=755 fix_pw.sh /usr/local/bin/fix_pw.sh
+RUN /usr/local/bin/fix_pw.sh
 
 # Clean up systemd services that we don't need in a container
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
