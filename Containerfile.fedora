@@ -1,9 +1,78 @@
-FROM fedora:40
+FROM fedora:42
 
 RUN rm -f /etc/yum.repos.d/fedora-cisco-openh264.repo
 
-RUN dnf install -y dnf-utils git python-unversioned-command python3 python3-pip clang lmdb-devel json-c-devel pcre-devel && \
-    dnf builddep -y 389-ds-base && \
-    dnf update -y && \
-    dnf clean all
+RUN dnf install -y \
+389-ds-base \
+389-ds-base-snmp \
+autoconf \
+automake \
+bind-utils \
+bzip2 \
+bzip2-devel \
+cargo \
+clang \
+coreutils-common \
+cracklib-devel \
+cracklib-dicts \
+dnf-utils \
+doxygen \
+gcc \
+gcc-c++ \
+gdb \
+git \
+hostname \
+icu \
+json-c-devel \
+krb5-devel \
+libasan \
+libcmocka-devel \
+libdb-devel \
+libevent-devel \
+libicu-devel \
+libtalloc-devel \
+libtevent-devel \
+libtool \
+libubsan \
+lm_sensors-devel \
+lmdb-devel \
+make \
+net-snmp-devel \
+net-tools \
+nodejs \
+nspr-devel \
+nss-devel \
+openldap-devel \
+openssl \
+openssl-devel \
+pam-devel \
+pcre-devel \
+pcre2-devel \
+procps-ng \
+psmisc \
+python-unversioned-command \
+python3 \
+python3-argcomplete \
+python3-argparse-manpage \
+python3-argparse-manpage+setuptools \
+python3-devel \
+python3-ldap \
+python3-libselinux \
+python3-pip \
+python3-policycoreutils \
+python3-pyasn1 \
+python3-pyasn1-modules \
+python3-pytest \
+python3-wheel \
+rpm-build \
+rsync \
+rust \
+sudo \
+systemd-devel \
+uuid \
+wget \
+zlib-devel \
+&& \
+dnf update -y && \
+dnf clean all
 
