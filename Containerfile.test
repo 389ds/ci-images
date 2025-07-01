@@ -10,10 +10,10 @@ libtevent-devel libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
 openldap-clients perl-Mozilla-LDAP python3-cryptography \
 python3-numpy python3-plotly python3-matplotlib \
-net-snmp net-snmp-utils && \
+net-snmp net-snmp-utils uv && \
 dnf clean all
 
-RUN pip3 install pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
+RUN uv pip install --system pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
 RUN playwright install
 RUN cargo install cargo-license --root /usr
 
