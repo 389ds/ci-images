@@ -10,7 +10,7 @@ RUN dnf install -y dnf-utils git epel-release && \
     python3-pytest npm nodejs rust cargo rpm-build \
     libatomic lld libasan libevent-devel libtalloc-devel \
     libtevent-devel libubsan libdrm make mesa-libgbm \
-    libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
+    libxshmfence webkit2gtk3 passwd cockpit dbus-daemon dbus-glib \
     openldap-clients perl-Mozilla-LDAP python3-cryptography \
     net-snmp net-snmp-utils rsync && \
     dnf clean all
