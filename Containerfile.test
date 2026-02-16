@@ -10,7 +10,8 @@ libtevent-devel libubsan libdrm mesa-libgbm \
 libxshmfence webkit2gtk3 passwd cockpit dbus-glib \
 openldap-clients perl-Mozilla-LDAP python3-cryptography \
 python3-numpy python3-plotly python3-matplotlib \
-net-snmp net-snmp-utils libnl3-devel uv && \
+net-snmp net-snmp-utils libnl3-devel uv \
+krb5-server krb5-workstation && \
 dnf clean all
 
 RUN uv pip install --system pytest-html pytest-custom_exit_code flaky pytest-playwright playwright python-slugify testimony
